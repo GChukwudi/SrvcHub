@@ -42,4 +42,3 @@ exports.login = async (req, res) => {
         });
 }
 
-// Get all users

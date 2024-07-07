@@ -46,12 +46,6 @@ exports.listCrafts = async (req, res) => {
         .catch(err => res.status(500).json({ error: err }));
 }
 
-exports.getCraft = async (req, res) => {
-    Craft.findById(req.params.id)
-        .then(craft => res.status(200).json(craft))
-        .catch(err => res.status(500).json({ error: err }));
-}
-
 exports.getCraftsByArtisan = async (req, res) => {
     Craft.find({ artisanId: req.params.artisanId })
         .then(crafts => res.status(200).json(crafts))
