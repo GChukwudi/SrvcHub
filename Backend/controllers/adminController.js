@@ -6,6 +6,36 @@ const Booking = require('../models/booking');
 const Review = require('../models/review');
 const { validationResult } = require('express-validator');
 
+exports.createAdmin = async (req, res) => {
+    const { username, password } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    bcrypt.hash(password, 10)
+        .then(hashedPassword => {
+            const admin = new User({
+                username,
+                password: hashedPassword,
+                role: 'admin'
+            });
+
+            admin.save()
+                .then(() => res.status(201).json({ message: 'Admin created successfully' }))
+                .catch(err => res.status(500).json({ error: err }));
+        })
+        .catch(err => res.status(500).json({ error: err }));
+}
+
+exports.loginAdmin = async (req, res) => {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Please provide both username and password' });
+    }
+
+}
 
 exports.generateReport = async (req, res) => {
     Promise.all([
