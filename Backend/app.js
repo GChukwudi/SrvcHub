@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const adminRoutes = require('./routes/adminRoutes');
-const craftRoutes = require('./routes/craftRoutes');
+// const craftRoutes = require('./routes/craftRoutes');
+const clientRoutes = require('./routes/clientRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const authRoutes = require('./routes/authRoutes');
 const artisanRoutes = require('./routes/artisanRoutes');
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -26,7 +27,8 @@ mongoose.connect(process.env.MONGO_URI, {
 
 
 app.use('/admin', adminRoutes);
-app.use('/craft', craftRoutes);
+// app.use('/craft', craftRoutes);
+app.use('/client', clientRoutes);
 app.use('/booking', bookingRoutes);
 app.use('/auth', authRoutes);
 app.use('/artisan', artisanRoutes);
