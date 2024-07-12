@@ -3,7 +3,7 @@ const router = express.Router();
 const artisanController = require('../controllers/artisanController');
 const checkAuth = require('../middleware/checkAuth');
 
-// router.get('/profile', checkAuth, artisanController.getProfile);
+router.get('/profile', checkAuth, artisanController.getProfile);
 router.put('/crafts', checkAuth, artisanController.createCraft);
 router.get('/crafts', checkAuth, artisanController.listCrafts);
 router.put('/crafts/:id', checkAuth, artisanController.updateCraft);
