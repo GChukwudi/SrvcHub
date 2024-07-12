@@ -5,7 +5,7 @@ const checkAuth = require('../middleware/checkAuth');
 const multer = require('../middleware/multer-config');
 
 // router.get('/profile', checkAuth, artisanController.getProfile);
-router.put('/crafts', checkAuth, multer, artisanController.createCraft);
+router.post('/crafts', checkAuth, multer, artisanController.createCraft);
 router.get('/crafts', checkAuth, artisanController.listCrafts);
 router.put('/crafts/:id', checkAuth, multer, artisanController.updateCraft);
 router.delete('/crafts/:id', checkAuth, artisanController.deleteCraft);

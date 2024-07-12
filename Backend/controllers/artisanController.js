@@ -2,15 +2,28 @@ const Craft = require('../models/craft');
 
 
 exports.createCraft = async (req, res) => {
-    const url = req.protocol + '://' + req.get('host');
+    let imageurl;
+    let imageType;
+
+    if (req.file) {
+        const url = req.protocol + '://' + req.get('host');
+        imageurl = url + '/images/' + req.file.filename;
+        imageType = req.file.mimetype.split('/')[1];
+    } else if (req.body.image) {
+        imageurl = req.body.image;
+        imageType = req.body.imageType;
+    } else {
+        return res.status(400).json({ message: 'Image is required' });
+    }
+
     const craft = new Craft({
         artisanId: req.userData.userId,
         name: req.body.name,
         category: req.body.category,
         description: req.body.description,
         price: req.body.price,
-        image: url + '/images/' + req.file.filename,
-        imageType: req.file.message.split('/')[1]
+        image: imageurl,
+        imageType: imageType
     });
     craft.save()
         .then(result => {

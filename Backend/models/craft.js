@@ -17,7 +17,7 @@ const craftSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['jewelry', 'clothing', 'home', 'art', 'other']
+        enum: ['Jewelry', 'Clothing', 'Home', 'Art', 'Other']
     },
     description: {
         type: String,
@@ -28,11 +28,12 @@ const craftSchema = new Schema({
         required: false
     },
     image: {
-        type: Buffer,
+        type: string,
         required: true
     },
     imageType: {
         type: String,
+        emunm: ['image/jpeg', 'image/png'],
         required: true
     },
     profileImage: {
