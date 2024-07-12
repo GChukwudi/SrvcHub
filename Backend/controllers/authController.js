@@ -8,9 +8,12 @@ exports.signup = async (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
         if (err) return res.status(500).json({ error: err });
 
+        const role = req.body.role;
+
         const user = new User({
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            role
         });
         user.save()
             .then(result => {
@@ -32,7 +35,7 @@ exports.login = async (req, res) => {
             bcrypt.compare(req.body.password, user.password, (err, result) => {
                 if (err || !result) return res.status(401).json({ message: 'Authentication failed' });
 
-                const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_KEY, { expiresIn: '1h' });
+                const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
                 res.status(200).json({ token, expiresIn: 3600, userId: user._id, role: user.role });
         });
 
