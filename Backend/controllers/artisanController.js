@@ -9,8 +9,8 @@ exports.createCraft = async (req, res) => {
         category: req.body.category,
         description: req.body.description,
         price: req.body.price,
-        image: req.body.image,
-        imageType: req.file.imageType
+        image: url + '/images/' + req.file.filename,
+        imageType: req.file.message.split('/')[1]
     });
     craft.save()
         .then(result => {
@@ -18,8 +18,7 @@ exports.createCraft = async (req, res) => {
                 message: 'Craft created successfully',
                 craft: {
                     ...result,
-                    id: result._id,
-                    image: url + '/images/' + result._id
+                    id: result._id
                 }
             });
         })
