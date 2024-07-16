@@ -1,38 +1,84 @@
 .App {
+  display: flex;
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  width: 200px;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 1rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.home, .artisans, .bookings, .login, .register {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.artisan-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.artisan-detail {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.booking-form {
+  margin-top: 2rem;
+}
+
+.booking-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.booking-form input {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+.booking-form button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  border: none;
+  cursor: pointer;
 }
