@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const artisanController = require('../controllers/artisanController');
+const artisanController = require('../controllers/artisanCont');
 
 router.get('/all', artisanController.getAllArtisans);
 router.get('/:artisanId', artisanController.getArtisanById);
