@@ -1,6 +1,6 @@
 import React from "react";
 import ArtisanDetails from "./ArtisanDetails";
-import './Artisans-err.css';
+import './Artisans.css';
 
 
 function Artisans({ artisans }) {
