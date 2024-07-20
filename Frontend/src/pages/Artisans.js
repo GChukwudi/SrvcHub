@@ -1,8 +1,8 @@
 import React from "react";
-import Artisans from "../components/Artisans/Artisans";
+import ArtisanList from "../components/Artisans/Artisans";
 import './Artisans.css';
 
-function Artisans() {
+function ArtisanPage() {
     const [artisans, setArtisans] = React.useState([]);
 
     React.useEffect(() => {
@@ -14,9 +14,9 @@ function Artisans() {
     return (
         <div className="artisans">
             <h1>Artisans</h1>
-            <Artisans artisans={artisans} />
+            <ArtisanList artisans={artisans} />
         </div>
     );
 }
 
-export default Artisans;
+export default ArtisanPage;

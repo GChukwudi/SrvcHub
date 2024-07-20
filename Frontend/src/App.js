@@ -6,8 +6,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Sidebar from './components/Layout/Sidebar';
-import Artisans from './pages/Artisans';
-import Bookings from './pages/Bookings';
+import ArtisanPage from './pages/Artisans';
+import BookingPage from './pages/Bookings';
 import Admin from './pages/Admin';
 import './App.css';
 
@@ -21,8 +21,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/profile" component={Profile} />
-        <Route path="/artisans" component={Artisans} />
-        <Route path="/bookings" component={Bookings} />
+        <Route path="/artisans" component={ArtisanPage} />
+        <Route path="/bookings" component={BookingPage} />
         <Route path="/admin" component={Admin} />
       </Switch>
     </Router>

@@ -1,8 +1,8 @@
 import React from "react";
-import Bookings from "../components/Bookings/BookingForm";
+import BookingForm from "../components/Bookings/BookingForm";
 import './Bookings.css';
 
-function Bookings() {
+function BookingPage() {
     const [bookings, setBookings] = React.useState([]);
 
     React.useEffect(() => {
@@ -24,4 +24,4 @@ function Bookings() {
     );
 }
 
-export default Bookings;
+export default BookingPage;

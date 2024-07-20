@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 // const dotenv = require('dotenv');
-const { MONGO_URI, PORT } = require('./config/config');
+// const bodyParser = require('body-parser');
+const { MONGODB_URI, PORT } = require('./config/config');
 
 
 const authRoutes = require('./routes/authRoutes');
@@ -15,12 +17,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(MONGO_URI, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-    console.log('Connected to database');
-});
+}).then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.log(err));
+
 
 app.use('/auth', authRoutes);
 app.use('/artisan', artisanRoutes);
@@ -28,4 +30,4 @@ app.use('/booking', bookingRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});s
+});
