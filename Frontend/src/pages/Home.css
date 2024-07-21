@@ -10,6 +10,8 @@ body {
     align-items: center;
     padding: 20px;
     background-color: #333;
+    position: fixed;
+    width: 100%;
 }
 
 .logo {
@@ -22,6 +24,7 @@ body {
 .header-nav {
     display: flex;
     align-items: center;
+    font-size: 13px;
 }
 .header-nav a,
 .header-nav-link {
@@ -32,7 +35,6 @@ body {
     font-weight: bold;
 }
 .header-nav-link {
-    /* color: #F5F5DC; */
     cursor: pointer;
     border-radius: 16px;
     display: inline-block;
@@ -40,10 +42,8 @@ body {
     margin: 5px;
     text-decoration: none;
     color: #F5F5DC;
-    background-color: #ff9f05; /* Primary button color */
-    /* border-radius: 5px; */
+    background-color: #ff9f05;
     text-align: center;
-    font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s
 }
@@ -56,4 +56,44 @@ body {
 .header-nav-link:active {
     background-color:lightgray;
     color: #333; 
+}
+
+.home-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #F5F5DC;
+}
+
+.home-globe {
+    margin-top: 50px;
+    margin-left: 90px;
+}
+
+.home-globe img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.intro-content {
+    color: #333;
+    font-size: 20px;
+    font-weight: extra-bold;
+    margin: 20px;
+}
+
+.intro-content h1 {
+    font-size: 40px;
+    font-weight: bold;
+    width: 400px;
+}
+
+.home-image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }

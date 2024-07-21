@@ -20,9 +20,12 @@ function Home() {
             </header>
 
             <section className="home-content">
+                <div className="home-globe">
+                    <img src="https://images.stockcake.com/public/a/c/b/acb258f4-fd7b-48b8-b3b6-8b700f2f677a/colorful-map-exploration-stockcake.jpg" alt="Artisan" />
+                </div>
                 <div className="intro-content">
                     <h1>Find the best artisans in your area</h1>
-                    <p>Get the best services from the best artisans in your area</p>
+                    <p>Get the best services from the best artisans around YOU!</p>
                     <div className="search">
                         <input type="text" placeholder="Search for talemts" />
                         <FaSearch className="search-icon" />
