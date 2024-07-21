@@ -1,11 +1,14 @@
+/* Base styles */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    height: 100%;
 }
 
+/* Header */
 .home-header {
     display: flex;
     justify-content: space-between;
@@ -14,40 +17,39 @@ body {
     background-color: #484848;
     position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: #F5F5DC;
-    text-decoration: none;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .header-nav {
     display: flex;
     align-items: center;
     font-size: 13px;
 }
+
 .header-nav a,
 .header-nav-link {
     margin: 0 10px;
     color: #F5F5DC;
     text-decoration: none;
-    /* margin-right: 20px; */
     font-weight: bold;
 }
+
 .header-nav-link {
     cursor: pointer;
     border-radius: 16px;
-    display: inline-block;
     padding: 5px 10px;
-    margin: 5px;
-    text-decoration: none;
-    color: #F5F5DC;
     background-color: #FFA500;
     text-align: center;
     font-weight: bold;
-    transition: background-color 0.3s
+    transition: background-color 0.3s;
 }
 
 .header-nav-link:hover {
@@ -56,88 +58,71 @@ body {
 }
 
 .header-nav-link:active {
-    background-color:lightgray;
+    background-color: lightgray;
     color: #333; 
 }
 
-#content {
-    background-color: #F5F5DC;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-}
-
+/* Content */
 .home-content {
-    margin-left: 100px;
-    margin-top: -50px;
-    height: 80vh;
+    padding-top: 100px; /* Adjust padding to account for fixed header */
 }
 
-.home-globe {
-    margin-top: 200px;
-    margin-left: -700px;
+.home-globe,
+.home-image {
+    margin-top: 20px;
 }
 
 .home-globe img,
 .home-image img {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
     object-fit: cover;
 }
 
 .intro-content {
     color: #333;
     font-size: 20px;
-    font-weight: extra-bold;
-    margin: 20px;
-    margin-top: -70px;
-    margin-left: 180px;
+    font-weight: bold;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .intro-content h1 {
     font-size: 40px;
-    font-weight: bold;
-    margin-left: -350px;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
 .intro-content h1 span {
     color: #ff9f05;
-    font-weight: bolder;
 }
 
 .intro-content p {
     font-size: 16px;
-    margin-left: -400px;
-    text-align: center;
-}
-.home-image {
-    margin-right: -420px;
-    margin-top: -200px;
+    margin-top: 10px;
 }
 
 .search {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-left: -300px;
-    margin-top: 100px;
+    margin: 20px auto;
 }
+
 .search input {
     padding: 10px;
     padding-left: 40px;
-    margin-right: 100px;
+    margin-bottom: 10px;
     border: 0.5px grey solid;
     border-radius: 15px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 40px;
-    box-sizing: border-box;
 }
+
 .search input::placeholder {
     color: #333;
-    font-size: 14px;
 }
 
 .search .filter-btn {
@@ -148,10 +133,9 @@ body {
     color: #FFFFFF;
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
-    width: 100px;
+    width: 100%;
+    max-width: 100px;
     height: 40px;
-    margin-left: -50px;
 }
 
 .search .filter-btn:hover {
@@ -159,150 +143,112 @@ body {
     color: #333;
 }
 
-.search .filter-btn:active {
-    background-color: lightgray;
-    color: #333;
-}
-
-.search .search-icon {
-    position: absolute;
-    left: 580px;
-    font-size: 18px;
-    color: #888
-}
-
+/* Sections */
 #about {
     background-color: #F5F5DC;
     color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 50px;
 }
+
 .about-texts {
-    margin-left: 50px;
-    width: 500px;
-}
-.about-content {
-    margin-left: 50px;
-}
-.about-image img {
-    border-radius: 50%;
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.3);
-    border-right: thin;
-}
-.about-texts h1 {
-    font-size: 60px;
-    font-weight: bolder;
-    margin-bottom: 20px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.about-texts p {
-    font-size: 20px;
-    margin-bottom: 20px;
+.about-content {
+    text-align: center;
 }
+
+.about-image img {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* How it works */
 .how-it-works {
     padding: 50px;
     background-color: #ffffe4;
-}
-
-.how-it-works h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 .steps {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 .step {
     flex: 1;
-    margin: 0 10px;
+    margin: 10px;
     text-align: center;
 }
 
 .step img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
     border-radius: 30px;
-    object-fit: cover;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.3);
+    /* box */
 }
-
-.step h2 {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.step p {
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: -20px;
-}
-.join-as-artisan{
-    justify-content: space-between;
-    align-items: center;
+.join-as-artisan {
     padding: 50px;
     background-color: #FFFFFF;
+    text-align: center;
 }
+
 .join-as-artisan h1 {
     font-size: 50px;
     font-weight: bold;
 }
+
 .join-content {
-    align-items: center;
     padding: 50px;
+    text-align: center;
 }
 
-.Craftsman-image img {
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
-    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
-    margin-top: -60px;
+/* Craftsman images */
+.Craftsman-image img,
+.Craftsman-images img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
     border-radius: 50%;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
 }
 
-.Craftsman-images img{
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
-    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
-    margin-top: -60px;
-    margin-left: -150px;
-    border-radius: 50%;
-}
 .Craftsman {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 50px;
-    margin-left: 100px;
-    /* background-color: #F5F5DC; */
+    background-color: #F5F5DC;
+    text-align: center;
 }
 
 .collaborate-content {
-    margin-left: 50px;
-    width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
 }
+
 .collaborate-content h2 {
     font-size: 40px;
     font-weight: bolder;
-    margin-bottom: 20px;
 }
 
 .collaborate-content p {
     font-size: 20px;
-    margin-top: -25px;
 }
-.join-button {
+
+/* Buttons */
+.join-button,
+.join-buttons,
+.newsletter button {
     padding: 10px 20px;
     border: none;
     border-radius: 15px;
@@ -311,122 +257,93 @@ body {
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     height: 40px;
-    margin-top: 20px;
+    margin: 10px auto;
 }
 
-.join-button:hover {
+.join-button:hover,
+.join-buttons:hover,
+.newsletter button:hover {
     background-color: #F5F5DC;
     color: #333;
 }
 
-.collaborate-contents h2 {
-    font-size: 40px;
-    font-weight: bolder;
-    margin-bottom: 20px;
-    margin-left: -700px;
-}
+.collaborate-contents h2,
 .collaborate-contents p {
-    font-size: 20px;
-    margin-top: -25px;
-    margin-left: -700px;
-}
-.join-buttons {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    background-color: #FFA500;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    width: 200px;
-    height: 40px;
-    margin-top: 20px;
-    margin-left: -700px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
 }
 
-.join-buttons:hover {
-    background-color: #F5F5DC;
-    color: #333;
-}
-
+/* Footer */
 .home-footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 50px;
     background-color: #484848;
     color: #F5F5DC;
-    height: 150px;
+    text-align: center;
+    height: auto;
 }
 
-.footer-content {
+.footer-content,
+.footer-social,
+.footer-links {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 500px; */
+    margin: 0 auto;
 }
 
 .footer-logo {
     font-size: 24px;
     font-weight: bold;
-    color: #F5F5DC;
-    text-decoration: none;
-}
-
-.footer-social {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* width: 200px; */
 }
 
 .footer-social a {
     color: #F5F5DC;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 16px;
 }
 
 .footer-social a:hover {
     color: #FFA500;
 }
 
-.footer-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .footer-links a {
     color: #F5F5DC;
     text-decoration: none;
-    /* margin: 0 10px; */
-    font-size: 16px;
-    margin-left: 100px;
-    width: 200px;
+    margin-left: 20px;
 }
+
+/* Newsletter */
 .newsletter {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 50px;
-    margin-left: 50px;
+    background-color: #F5F5DC;
+    text-align: center;
 }
+
 .newsletter input {
     padding: 10px;
     padding-left: 40px;
     border: 0.5px grey solid;
     border-radius: 15px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 40px;
-    box-sizing: border-box;
 }
+
 .newsletter input::placeholder {
     color: #333;
-    font-size: 14px;
 }
 
 .newsletter button {
@@ -438,7 +355,198 @@ body {
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    width: 100px;
+    width: 100%;
+    max-width: 100px;
     height: 40px;
-    margin-left: -50px;
+    margin-top: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .home-header {
+        padding: 15px;
+    }
+
+    .header-nav a,
+    .header-nav-link {
+        font-size: 12px;
+        margin: 0 5px;
+    }
+
+    .intro-content h1 {
+        font-size: 35px;
+    }
+
+    .intro-content p {
+        font-size: 14px;
+    }
+
+    .search {
+        flex-direction: column;
+    }
+
+    .search input {
+        max-width: 100%;
+    }
+
+    .search .filter-btn {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 992px) {
+    .home-content {
+        padding: 20px;
+    }
+
+    .home-globe {
+        margin-left: 0;
+    }
+
+    .home-image {
+        margin-right: 0;
+    }
+
+    .about-texts {
+        width: 90%;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .how-it-works h1 {
+        font-size: 40px;
+    }
+
+    .step {
+        margin: 10px 0;
+    }
+
+    .step img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search .filter-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .about-texts h1 {
+        font-size: 30px;
+    }
+
+    .about-texts p {
+        font-size: 16px;
+    }
+
+    .join-as-artisan h1 {
+        font-size: 40px;
+    }
+
+    .join-content {
+        padding: 20px;
+    }
+
+    .Craftsman {
+        flex-direction: column;
+    }
+
+    .newsletter input {
+        width: 100%;
+    }
+
+    .newsletter button {
+        width: 100%;
+    }
+
+    .footer-content,
+    .footer-social,
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-header {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .header-nav {
+        font-size: 11px;
+    }
+
+    .intro-content h1 {
+        font-size: 25px;
+    }
+
+    .intro-content p {
+        font-size: 12px;
+    }
+
+    .search input {
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .search .filter-btn {
+        max-width: 100%;
+    }
+
+    .home-image img {
+        max-width: 120px;
+    }
+
+    .about-image img {
+        max-width: 300px;
+    }
+
+    .how-it-works h1 {
+        font-size: 30px;
+    }
+
+    .step img {
+        max-width: 120px;
+    }
+
+    .join-as-artisan h1 {
+        font-size: 30px;
+    }
+
+    .join-button,
+    .join-buttons,
+    .newsletter button {
+        max-width: 100%;
+    }
+
+    .footer-content,
+    .footer-social,
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
