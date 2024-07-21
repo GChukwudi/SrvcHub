@@ -126,13 +126,13 @@ function Home() {
                     <div className="footer-links">
                         <a href="#about">Privacy policy</a>
                         <a href="#about">Terms conditions</a>
-                        <a href="#home-content">Home</a>
                     </div>
                     <div className="newsletter">
                         <input type="email" placeholder="Enter your email" />
                         <button>Subscribe</button>
                     </div>
                 </div>
+                
             </footer>
         </div>
     );
