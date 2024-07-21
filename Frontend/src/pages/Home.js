@@ -19,21 +19,23 @@ function Home() {
                 </nav>
             </header>
 
-            <section className="home-content">
-                <div className="home-globe">
-                    <img src="https://images.stockcake.com/public/a/c/b/acb258f4-fd7b-48b8-b3b6-8b700f2f677a/colorful-map-exploration-stockcake.jpg" alt="Artisan" />
-                </div>
-                <div className="intro-content">
-                    <h1>Find the best artisans in your area</h1>
-                    <p>Get the best services from the best artisans around YOU!</p>
-                    <div className="search">
-                        <input type="text" placeholder="Search for talemts" />
-                        <FaSearch className="search-icon" />
-                        <button className="filter-btn">Filter</button>
+            <section className="content">
+                <div className="home-content">
+                    <div className="home-globe">
+                        <img src="https://images.stockcake.com/public/a/c/b/acb258f4-fd7b-48b8-b3b6-8b700f2f677a/colorful-map-exploration-stockcake.jpg" alt="Artisan" />
                     </div>
-                </div>
-                <div className="home-image">
-                    <img src="https://images.stockcake.com/public/7/a/5/7a53082e-3250-44ac-93bd-53403cad4b3b/artisan-selecting-fabric-stockcake.jpg" alt="Artisan" />
+                    <div className="intro-content">
+                        <h1>Find the best artisans <br/> around <span>YOU!</span> </h1>
+                        <p>Discover and book the best artisans in your area.<br/> SrvcHub is here to connect you with the best artisans in your area.</p>
+                        <div className="search">
+                            <input type="text" placeholder="Search for talemts" />
+                            <FaSearch className="search-icon" />
+                            <button className="filter-btn">Filter</button>
+                        </div>
+                    </div>
+                    <div className="home-image">
+                        <img src="https://images.stockcake.com/public/7/a/5/7a53082e-3250-44ac-93bd-53403cad4b3b/artisan-selecting-fabric-stockcake.jpg" alt="Artisan" />
+                    </div>
                 </div>
             </section>
 
