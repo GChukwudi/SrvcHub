@@ -1,9 +1,8 @@
-/* Login page specific styles */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(rgba(0, 179, 255, 0.489), rgba(245, 222, 179, 0.5)), no-repeat center center fixed; /* Background image with gradient */
+    background: linear-gradient(rgba(0, 179, 255, 0.489), rgba(245, 222, 179, 0.5)), no-repeat center center fixed;
     background-size: cover;
 }
 header {
@@ -18,7 +17,8 @@ header {
     justify-content: space-between;
 }
 header h1 {
-    margin: 0;
+    margin: 12;
+    margin: ;
 }
 
 nav a {
@@ -27,76 +27,69 @@ nav a {
     text-decoration: none;
 }
 
-.login-container {
+.verification-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Transparent background */
+    background: rgba(0, 0, 0, 0.5)
 }
 
-.login-card {
+.verification-box {
     background-color: (255, 255, 255, 4.1);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px (0, 0, 0, 0.1);
-    width: 400px;
-    height: 300px;
+    box-shadow: 0 4px 10px (0, 0, 0, 0.1);
+    width: 300px;
+    height: 200px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Frosted glass effect */
     text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.login-card h2 {
+.verification-box h2 {
     margin-bottom: 20px;
     color: #333;
     font-size: 30px;
     font-weight: bold;
 }
-.login-card p {
-    margin-bottom: 16px;
-    color: #333;
-    font-size: 20px;
-    font-weight: lighter;
-}
-.login-card input {
+
+.verification-box input {
     width: 300px;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 30px;
+    border-radius: 4px;
     box-sizing: border-box;
 }
-.login-card input::placeholder {
-    color: #ccc;
+
+.verification-box button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 14px;
+}
+.verification-box button::placeholder {
+    color: #ccc;
+    font-size: 20px;
     padding: 0 10px;
 }
 
-.login-card button {
-    width: 300px;
-    padding: 10px;
-    border: none;
-    background-color: #FFA500; /* Orange color */
-    color: white;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: lighter;
-    font-size: 14px;
-}
-.login-card button:hover {
+.verification-box button:hover {
     background-color: #FF8C00;
 }
 
-.login-card button:hover {
-    background-color: #FF8C00; /* Darker orange color */
-}
-
-.under {
-    margin-top: 15px;
-}
-
-.under a {
-    color: #FFA500; /* Orange color */
-    text-decoration: none;
+.verification-box input::after {
+    content: "Verify";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFA500;
+    transition: 0.5s;
 }

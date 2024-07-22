@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SrvcHub - Sign Up</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="styles/signup.css">
 </head>
 <body>
+    <header>
+        <h1>SrvcHub</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Sign In</a>
+        </nav>
+    </header>
     <div class="signup-container">
         <div class="signup-card">
             <h2>Sign Up</h2>
-            <form id="signup-form">
+            <form id="signupForm">
                 <input type="text" id="name" placeholder="Full Name" required>
                 <input type="email" id="email" placeholder="Email" required>
                 <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
                 <button type="submit">Sign Up</button>
             </form>
             <p>Already have an account? <a href="login.html">Login</a></p>
         </div>
     </div>
-    <script src="scripts/scripts.js"></script>
+    <script src="scripts/signup.js"></script>
 </body>
 </html>
