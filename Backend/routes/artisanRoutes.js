@@ -7,6 +7,8 @@ router.get('/:artisanId', artisanController.getArtisanById);
 router.get('/:category', artisanController.getArtisanByCategory);
 router.put('/:artisanId', artisanController.updateArtisan);
 router.delete('/:artisanId', artisanController.deleteArtisan);
-router.post('/loga', artisanController.createArtisan);
+router.post('/log', artisanController.createArtisan);
+router.get('/search/:location', artisanController.searchArtisanByLocation);
+router.get('/search/:name', artisanController.searchArtisanByName);
 
 module.exports = router;
