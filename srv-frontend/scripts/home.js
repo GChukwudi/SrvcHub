@@ -19,7 +19,7 @@ searchButton.addEventListener('click', async () => {
                 <p>${artisan.description}</p>
             `;
             div.addEventListener('click', () => {
-                window.location.href = `artisan-profile.html?id=${artisan.id}`;
+                window.location.href = `artisanprofile.html?id=${artisan.id}`;
             });
             resultContainer.appendChild(div);
         })

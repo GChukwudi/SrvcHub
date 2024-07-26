@@ -15,13 +15,13 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.signup = async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, address, location } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(password, 12);
         const verificationCode = crypto.randomInt(100000, 999999).toString();
 
-        const newUser = new User({ name, email, password: hashedPassword, role, verificationCode, verificationCodeExpires: Date.now() + 3600000, isVerified: false });
+        const newUser = new User({ name, email, password: hashedPassword, role, verificationCode, verificationCodeExpires: Date.now() + 3600000, isVerified: false, address, location});
 
         await newUser.save();
 
@@ -81,4 +81,42 @@ exports.verify = async (req, res) => {
         res.status(500).json({ message: 'Internal server error!' });
     }
 }
+
+exports.getUserProfile = async (req, res) => {
+    const { userId } = req;
+
+    try {
+        const user = await User.findById(userId).select('-password');
+        res.status(200).json(user);
+    }
+    catch (err) {
+        res.status(500).json({ message: 'Internal server error!' });
+    }
+}
+
+exports.updateUserProfile = async (req, res) => {
+    upload(req, res, async (err) => {
+        if (err) return res.status(400).json({ message: err.message });
+
+        const { userId } = req;
+        const { name, email, address, location } = req.body;
+        const imageProfile = req.file.filename;
+
+        try {
+            const user = await User.findById(userId);
+            user.name = name;
+            user.email = email;
+            user.address = address;
+            user.location = location;
+            user.imageProfile = imageProfile;
+            await user.save();
+
+            res.status(200).json({ message: 'User profile updated successfully!' });
+        } catch (err) {
+            res.status(500).json({ message: 'Internal server error!' });
+        }
+    });
+}
+
+
 

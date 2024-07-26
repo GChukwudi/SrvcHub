@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+const locationSchema = new mongoose.Schema({
+    longitude: {
+        type: Number,
+        required: false
+    },
+    latitude: {
+        type: Number,
+        required: false
+    }
+});
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -15,9 +26,36 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    isAdmin: {
+    role: {
+        type: String,
+        required: false,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
+    isVerified: {
         type: Boolean,
         default: false
+    },
+    verificationCode: {
+        type: String,
+        required: false
+    },
+    verificationCodeExpires: {
+        type: Date,
+        required: false
+    },
+    isArtisan: {
+        type: Boolean,
+        default: false
+    },
+    location: locationSchema,
+    address: {
+        type: String,
+        required: false
+    },
+    imageProfile: {
+        type: Buffer,
+        required: false
     }
 }, { timestamps: true });
 
