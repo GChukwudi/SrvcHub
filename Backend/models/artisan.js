@@ -8,7 +8,7 @@ const artisanSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Jeweler', 'Tailor', 'Sculptor', 'LeatherWorker', 'Weaver', 'Potter', 'Carpenter', 'Plumber']
+        enum: ['Jeweler', 'Tailor', 'Sculptor', 'LeatherWorker', 'Weaver', 'Potter', 'Carpenter', 'Plumber', 'Curlinary']
     },
     bio: {
         type: String,

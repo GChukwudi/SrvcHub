@@ -80,7 +80,9 @@ exports.createArtisan = async (req, res) => {
     try {
         const newArtisan = new Artisan(artisan);
         res.status(201).json(newArtisan);
+        console.log('Artisan created successfully');
     } catch (err) {
+        console.log(err);
         res.status(400).json({ error: err.message });
     }
 }
