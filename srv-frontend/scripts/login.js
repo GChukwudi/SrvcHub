@@ -4,9 +4,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    console.log('email:', email, 'password:', password);
+
     try {
-        const response = await fetch('http://localhost:8000/api/auth', {
+        const response = await fetch('http://localhost:8000/auth/signin', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -18,14 +21,17 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             localStorage.setItem('token', result.token);
             window.location.href = 'home.html';
         } else {
-            if (result.message === 'User not found') {
-                alert('User not found');
-            } else if (result.message === 'Invalid password') {
-                alert('Invalid password');
-            } else {
-                alert('An error occurred. Please try again later');
+            // if (result.message === 'User not found') {
+            //     alert('User not found');
+            // } else if (result.message === 'Invalid password') {
+            //     alert('Invalid password');
+            // } else {
+            //     alert('An error occurred. Please try again later');
+            // }
+
+            alert(response.message)
         }
-    }}catch (error) {
+    }catch (error) {
         console.error('Error logging in:', error);
     }
 });

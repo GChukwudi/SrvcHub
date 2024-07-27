@@ -14,17 +14,16 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.signup = async (req, res) => {
-    const { name, email, password, role, address, location } = req.body;
+    let { name, email, password, role, address, location } = req.body;
 
     try {
 
         const userExists = await User.findOne({ email });
-        
+        console.log('password:', password);       
 
-        const hashedPassword = await bcrypt.hash(password, 12);
         const verificationCode = crypto.randomInt(100000, 999999).toString();
 
-        const newUser = new User({ name, email, password: hashedPassword, role, verificationCode, verificationCodeExpires: Date.now() + 3600000, isVerified: false, address, location});
+        const newUser = new User({ name, email, password, role, verificationCode, verificationCodeExpires: Date.now() + 3600000, isVerified: false, address, location});
 
         await newUser.save();
 
@@ -51,11 +50,15 @@ exports.signin = async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) return res.status(400).json({ message: 'Invalid credentials!' });
 
+        console.log('password:', password, 'user.password:', user.password);
+
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: 'Invalid credentials!' });
+        console.log('isMatch:', isMatch);
+        if (!isMatch) return res.status(400).json({ message: 'Incorrect email or password!' });
 
         const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
-        res.status(200).json({ token });
+        console.log('token:', token);
+        res.status(200).json({ token, message: 'User signed in successfully!' });
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: 'Internal server error!' });
@@ -67,10 +70,11 @@ exports.signout = async (req, res) => {
 }
 
 exports.verify = async (req, res) => {
-    const { email, verificationCode } = req.body;
+    // const { email, verificationCode } = req.body;
+    const { verificationCode } = req.body;
 
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ verificationCode });
         if (!user) return res.status(400).json({ message: 'User not found!' });
 
         if (user.verificationCode !== verificationCode) return res.status(400).json({ message: 'Invalid verification code!' });
