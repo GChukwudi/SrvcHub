@@ -19,7 +19,6 @@ exports.signup = async (req, res) => {
     try {
 
         const userExists = await User.findOne({ email });
-        console.log('password:', password);       
 
         const verificationCode = crypto.randomInt(100000, 999999).toString();
 
@@ -38,7 +37,6 @@ exports.signup = async (req, res) => {
         res.status(201).json({ message: 'User created successfully!' });
     } catch (err) {
         console.log(err);
-        // await User.remove({ email });
         res.status(500).json({ message: 'Internal server error!' });
     }
 };
@@ -50,14 +48,10 @@ exports.signin = async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) return res.status(400).json({ message: 'Invalid credentials!' });
 
-        console.log('password:', password, 'user.password:', user.password);
-
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log('isMatch:', isMatch);
         if (!isMatch) return res.status(400).json({ message: 'Incorrect email or password!' });
 
         const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
-        console.log('token:', token);
         res.status(200).json({ token, message: 'User signed in successfully!' });
     } catch (err) {
         console.log(err);

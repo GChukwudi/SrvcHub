@@ -6,7 +6,7 @@ const bookingSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    arisanId: {
+    artisanId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Artisan',
         required: true
@@ -21,7 +21,7 @@ const bookingSchema = new mongoose.Schema({
     },
     location: {
         type: String,
-        required: true
+        required: false
     },
     status: {
         type: String,

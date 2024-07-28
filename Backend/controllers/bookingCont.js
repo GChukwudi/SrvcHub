@@ -1,8 +1,12 @@
 const Booking = require('../models/booking');
+const mongoose = require('mongoose');
 
 exports.createBooking = async (req, res) => {
-    const { artisanId, date, time, service } = req.body;
-    const { userId } = req.user.userId;
+    const { date, time } = req.body;
+
+    const userId = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+
+    const artisanId = mongoose.Types.ObjectId.createFromHexString(req.body.artisanId);
 
     try {
         const booking = new Booking({
@@ -10,7 +14,6 @@ exports.createBooking = async (req, res) => {
             userId,
             date,
             time,
-            service
         });
 
         await booking.save();
