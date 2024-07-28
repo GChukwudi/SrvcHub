@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema({
         required: false
     },
     imageProfile: {
-        type: Buffer,
+        type: String,
         required: false
     }
 }, { timestamps: true });

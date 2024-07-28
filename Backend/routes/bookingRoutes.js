@@ -5,8 +5,8 @@ const auth = require('../middleware/authMid');
 
 router.post('/create', auth, createBooking);
 router.delete('/:id/cancel', auth, cancelBooking);
-router.get('/:id/my-appointment', auth, viewMyAppointment);
-router.get('/:id/my-booking', auth, viewMyBooking);
+router.get('/:id/my-appointment', auth, viewMyBooking);
+router.get('/mybooking', auth, viewMyAppointment);
 
 module.exports = router;
 

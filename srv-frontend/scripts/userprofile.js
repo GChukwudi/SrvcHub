@@ -1,78 +1,129 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const calendarEl = document.getElementById('calendar');
-    const editProfileModal = document.getElementById('editProfileModal');
-    const editProfileBtn = document.getElementById('edit-button');
-    const editProfileForm = document.getElementById('editProfileForm');
-    const closeModal = document.getElementsByClassName('close')[0];
+const resultContainer = document.getElementById("profileDetails");
 
-    async function getUserProfile() {
-        try {
-            const response = await fetch('/api/user/profile'); // Add the actual route to get user profile
-            const data = await response.json();
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarEl = document.getElementById("calendar");
+  const editProfileModal = document.getElementById("editProfileModal");
+  const editProfileBtn = document.getElementById("edit-button");
+  const editProfileForm = document.getElementById("editProfileForm");
+  const closeModal = document.getElementsByClassName("close")[0];
 
-            document.getElementById('name').innerHTML = data.name;
-            document.getElementById('email').innerHTML = data.email;
-            document.getElementById('phone').innerHTML = data.phone;
-            document.getElementById('address').innerHTML = data.address;
+  async function getUserProfile() {
+    const token = localStorage.getItem("token");
 
-            document.getElementById('edit-name').value = data.name;
-            document.getElementById('edit-email').value = data.email;
-            document.getElementById('edit-phone').value = data.phone;
-            document.getElementById('edit-address').value = data.address;
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-        }
+    const url =
+      (`http://localhost:8000/auth/profile`);
+
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const user = await response.json();
+
+      console.log("user:", user);
+
+      if (user) {
+        resultContainer.innerHTML = "";
+        const div = document.createElement("div");
+        div.className = "result-profile";
+        div.id = user.id;
+        div.innerHTML = `
+                    <img src="${user.imageProfile}" alt="${user.name}">
+                    <h2>${user.name}</h2>
+                    <p>${user.email}</p>
+                    <p>${user.address}</p>
+                `;
+
+        resultContainer.append(div);
+      }
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+      alert("Failed to fetch user profile");
     }
+  }
 
-    editProfileBtn.onclick = function() {
-        editProfileModal.style.display = 'block';
+
+  editProfileBtn.onclick = function () {
+    editProfileModal.style.display = "block";
+  };
+
+  closeModal.onclick = function () {
+    editProfileModal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == editProfileModal) {
+      editProfileModal.style.display = "none";
     }
+  };
 
-    closeModal.onclick = function() {
-        editProfileModal.style.display = 'none';
+  editProfileForm.onsubmit = async function (event) {
+    event.preventDefault();
+
+    const updatedProfile = {
+      name: document.getElementById("edit-name").value,
+      email: document.getElementById("edit-email").value,
+      imageProfile: document.getElementById("edit-image").value,
+    //   phone: document.getElementById("edit-phone").value,
+      address: document.getElementById("edit-address").value,
+
+    };
+
+    try {
+      const response = await fetch(`http://localhost:8000/auth/editprofile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify(updatedProfile),
+      });
+
+      if (response.ok) {
+        editProfileModal.style.display = "none";
+        getUserProfile();
+      } else {
+        console.error("Error updating profile");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
     }
+  };
 
-    window.onclick = function(event) {
-        if (event.target == editProfileModal) {
-            editProfileModal.style.display = 'none';
-        }
-    }
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+  });
 
-    editProfileForm.onsubmit = async function(event) {
-        event.preventDefault();
+  const getBookings = async () => {
+    const token = localStorage.getItem("token");
 
-        const updatedProfile = {
-            name: document.getElementById('edit-name').value,
-            email: document.getElementById('edit-email').value,
-            phone: document.getElementById('edit-phone').value,
-            address: document.getElementById('edit-address').value,
-        };
+    const url = `http://localhost:8000/booking/mybooking`;
 
-        try {
-            const response = await fetch('/api/user/profile', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedProfile),
-            });
-
-            if (response.ok) {
-                editProfileModal.style.display = 'none';
-                getUserProfile();
-            } else {
-                console.error('Error updating profile');
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
-        } catch (error) {
-            console.error('Error updating profile:', error);
-        }
+        });
+        const bookings = await response.json();
+        console.log('bookings:', bookings);
+        // write bookings to display on calendar
+        bookings.forEach(booking => {
+            calendar.addEvent({
+                title: 'Booking',
+                start: booking.date,
+                allDay: true
+            });
+        });
+    }
+    catch (error) {
+        console.error('Error fetching bookings:', error);
+    }
     }
 
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        events: '/api/user/appointments' // Add the actual route to get user appointments
-    });
 
+    getBookings();
     calendar.render();
     getUserProfile();
 });

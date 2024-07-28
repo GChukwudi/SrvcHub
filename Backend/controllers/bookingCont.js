@@ -40,7 +40,7 @@ exports.cancelBooking = async (req, res) => {
 }
 
 exports.viewMyAppointment = async (req, res) => {
-    const { userId } = req.params;
+    const { userId } = req.user;
 
     try {
         const bookings = await Booking.find({ userId });

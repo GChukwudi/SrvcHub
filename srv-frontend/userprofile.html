@@ -19,14 +19,7 @@
     <main>
         <section class="user-profile">
             <div class="user-profile-details">
-                <div class="user-profile-image">
-                    <img src="https://images.stockcake.com/public/1/f/7/1f773023-4667-4856-98b8-be7210f26fc4/focused-tech-user-stockcake.jpg" alt="User Image">
-                </div>
-                <div class="user-profile-info">
-                    <p><i class="fas fa-user"></i> Name: <span id="name">John Doe</span></p>
-                    <p><i class="fas fa-envelope"></i> Email: <span id="email">JDoe@example.com</span></p>
-                    <p><i class="fas fa-phone"></i> Phone: <span id="phone">123-456-7890</span></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Address: <span id="address">1234 Main St, City, State, 12345</span></p>
+                <div id="profileDetails"></div>
                     <button id="edit-button">Edit Profile</button>
                 </div>
             </div>
@@ -63,14 +56,15 @@
             <span class="close">&times;</span>
             <h2>Edit Profile</h2>
             <form id="editProfileForm">
+                <label for="edit-image">Profile Picture:</label>
+                <input type="text" id="edit-image" name="image">
                 <label for="edit-name">Name:</label>
-                <input type="text" id="edit-name" name="name" required>
+                <input type="text" id="edit-name" name="name">
                 <label for="edit-email">Email:</label>
-                <input type="email" id="edit-email" name="email" required>
-                <label for="edit-phone">Phone:</label>
-                <input type="tel" id="edit-phone" name="phone" required>
+                <input type="email" id="edit-email" name="email">
                 <label for="edit-address">Address:</label>
-                <input type="text" id="edit-address" name="address" required>
+                <input type="text" id="edit-address" name="address">
+
                 <button type="submit">Save Changes</button>
             </form>
         </div>

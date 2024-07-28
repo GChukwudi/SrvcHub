@@ -3,7 +3,7 @@ const { JWT_SECRET } = require('../config/config');
 
 const auth = async (req, res, next) => {
     const token = req.header('Authorization').replace('Bearer ', '');
-    console.log('token:', token);
+    // console.log('token:', token);
     if (!token) {
         return res.status(401).json({ error: 'Access denied. No token provided' });
     }
