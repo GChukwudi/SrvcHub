@@ -1,4 +1,4 @@
-const { error } = require("console")
+// const { error } = require("console")
 
 const resultContainer = document.getElementById('profileDetails')
 const bookingform = document.getElementById('bookingForm')
@@ -9,6 +9,8 @@ const calendarEl = document.getElementById('calendar')
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search)
     const artisanId = urlParams.get('id');
+
+    // const userId = localStorage.getItem('userId');
     
     if (artisanId) {
         const url = `http://localhost:8000/artisan/${artisanId}`;
@@ -64,13 +66,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(bookingDetails)
+                body: JSON.stringify(booking)
             });
             if (response.ok){
                 alert('Booking created successfully');
                 bookingform.style.display = 'none';
             } else {
                 alert(`Failed to create booking: ${error}`);
+                bookingform.style.display = 'none';
             }
         } catch (error) {
             console.error('Error creating booking:', error);
