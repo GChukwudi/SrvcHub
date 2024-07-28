@@ -52,9 +52,9 @@ exports.signin = async (req, res) => {
         if (!isMatch) return res.status(400).json({ message: 'Incorrect email or password!' });
 
         const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '24h' });
-        res.cookie('token', token, { 
-            httpOnly: true,
-            secure: process.emv.NODE_Env === 'production' });
+        // res.cookie('token', token, { 
+        //     httpOnly: true,
+        //     secure: process.emv.NODE_Env === 'production' });
 
         res.status(200).json({ token, message: 'User signed in successfully!' });
     } catch (err) {

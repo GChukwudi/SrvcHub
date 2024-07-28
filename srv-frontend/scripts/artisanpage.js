@@ -62,10 +62,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(booking);
         try {
             const url = `http://localhost:8000/booking/create`;
+            const token = localStorage.getItem('token');
+            console.log('token:', token);
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(booking)
             });

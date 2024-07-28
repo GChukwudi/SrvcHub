@@ -2,21 +2,21 @@ const Booking = require('../models/booking');
 const mongoose = require('mongoose');
 
 exports.createBooking = async (req, res) => {
-    // const { date, time } = req.body;
-    const { date, time, artisanId } = req.body;
+    const { date, time } = req.body;
+    // const { date, time, artisanId } = req.body;
 
-    // const userId = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+    const userId = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
 
 
-    // const artisanId = mongoose.Types.ObjectId.createFromHexString(req.body.artisanId);
+    const artisanId = mongoose.Types.ObjectId.createFromHexString(req.body.artisanId);
 
     try {
-        const userId = mongoose.Types.ObjectId(req.user.userId);
-        const artisanObjectId = mongoose.Types.ObjectId(artisanId);
+        // const userId = mongoose.Types.ObjectId(req.user.userId);
+        // const artisanObjectId = mongoose.Types.ObjectId(artisanId);
 
         const booking = new Booking({
-            artisanId: artisanObjectId,
-            userId: userId,
+            artisanId,
+            userId,
             date,
             time,
         });
