@@ -3,7 +3,7 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(rgba(0, 179, 255, 0.489), rgba(245, 222, 179, 0.5)), no-repeat center center fixed; /* Background image with gradient */
+    background-image: url('https://img.freepik.com/free-photo/top-view-chinese-ink-concept_23-2148785934.jpg?t=st=1722151123~exp=1722154723~hmac=4fa5e3f097edb7ea723a06f959ca4dbb87cf7801ae2767dea711bf46d9bd17ef&w=1060');
     background-size: cover;
 }
 header {
@@ -36,7 +36,7 @@ nav a {
 }
 
 .signup-card {
-    background-color: (255, 255, 255, 4.1);
+    background-color: rgba(216, 191, 153, 5);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px (0, 0, 0, 0.1);

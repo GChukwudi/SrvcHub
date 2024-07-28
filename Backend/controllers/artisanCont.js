@@ -56,8 +56,11 @@ exports.deleteArtisan = async (req, res) => {
 
 exports.searchArtisanByLocation = async (req, res) => {
     try {
-        const { location } = req.params;
+        const { location } = req.query;
+        console.log(location);
+        console.log('query', req.query)
         const artisans = await Artisan.find({ location: new RegExp(location, 'i') });
+        // const artisans = await Artisan.find({ location });
         res.status(200).json(artisans);
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -66,6 +69,7 @@ exports.searchArtisanByLocation = async (req, res) => {
 
 exports.searchArtisanByName = async (req, res) => {
     try {
+        console.log('params', req.params)
         const { name } = req.params;
         const artisans = await Artisan.find({ name: new RegExp(name, 'i') });
         res.status(200).json(artisans);
@@ -78,7 +82,7 @@ exports.createArtisan = async (req, res) => {
     const artisan = req.body;
 
     try {
-        const newArtisan = new Artisan(artisan);
+        const newArtisan = await new Artisan(artisan).save();
         res.status(201).json(newArtisan);
         console.log('Artisan created successfully');
     } catch (err) {

@@ -29,6 +29,20 @@ nav a:hover {
     text-decoration: underline;
 }
 
+#menuToggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+#menuToggle span {
+    background: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: all 0.3s;
+}
+
 #service_around {
     text-align: center;
     padding: 20px;
@@ -71,8 +85,56 @@ nav a:hover {
     background-color: #2a2a35;
 }
 
+@media (max-width: 768px) {
+    .map {
+        display: none;
+    }
+    footer {
+        padding: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    footer h2.footer_logo, footer p, footer nav, .social-links {
+        flex: 1 0 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    footer nav a {
+        margin: 0 5px;
+    }
+    .social-links a {
+        font-size: 1em;
+        margin: 0 5px;
+    }
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #333;
+    }
+    
+    nav a {
+        padding: 10px 0;
+        margin: 0;
+        border-top: 1px solid #444;
+    }
+
+    #menuToggle {
+        display: flex;
+    }
+
+    nav.active {
+        display: flex;
+    }
+}
+
+
 #results {
+    flex: 2;
     margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .result-item {
@@ -83,9 +145,18 @@ nav a:hover {
 .result-item:hover {
     background-color: #f0f0f0;
 }
+
+.result-item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .map {
     flex: 1;
-    height: 400px;
+    height: 500px;
     width: 400px;
     border: 1px solid #999;
     margin-top: 20px;
@@ -99,7 +170,7 @@ footer {
     padding: 20px;
     text-align: center;
     justify-content: space-between;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 footer h2.footer_logo {

@@ -8,11 +8,11 @@ const artisanSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Jeweler', 'Tailor', 'Sculptor', 'LeatherWorker', 'Weaver', 'Potter', 'Carpenter', 'Plumber', 'Curlinary']
+        enum: ['Jeweler', 'Tailor', 'Sculptor', 'LeatherWorker', 'Weaver', 'Potter', 'Carpenter', 'Plumber', 'Curlinary', 'Hairdresser', 'Painter', 'Electrician', 'Mechanic', 'Woodworker', 'Photographer', 'Baker', 'Blacksmith', 'Others']
     },
     bio: {
         type: String,
-        required: true
+        required: false
     },
     location: {
         type: String,
@@ -24,7 +24,7 @@ const artisanSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     },
     image: {
