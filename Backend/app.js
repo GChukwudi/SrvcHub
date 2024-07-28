@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 // const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { MONGODB_URI, PORT } = require('./config/config');
 
@@ -22,6 +23,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 mongoose.connect(MONGODB_URI, {
 }).then(() => console.log('Connected to MongoDB'))

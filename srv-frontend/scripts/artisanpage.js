@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             time: formData.get('time'),
             location: formData.get('location')
         };
+        console.log(booking);
         try {
             const url = `http://localhost:8000/booking/create`;
             const response = await fetch(url, {

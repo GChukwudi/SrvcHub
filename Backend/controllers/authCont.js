@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
 
     try {
 
-        const userExists = await User.findOne({ email });
+        // const userExists = await User.findOne({ email });
 
         const verificationCode = crypto.randomInt(100000, 999999).toString();
 
@@ -51,7 +51,9 @@ exports.signin = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ message: 'Incorrect email or password!' });
 
-        const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '24h' });
+        res.cookie('token', token, { httpOnly: true, process.env.NODE_ENV === 'production' });
+
         res.status(200).json({ token, message: 'User signed in successfully!' });
     } catch (err) {
         console.log(err);
