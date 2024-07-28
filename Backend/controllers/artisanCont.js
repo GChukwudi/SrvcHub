@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const Artisan = require('../models/artisan');
 // const User = require('../models/user');
 // const bcrypt = require('bcrypt');
@@ -26,9 +27,18 @@ exports.getArtisanByCategory = async (req, res) => {
 exports.getArtisanById = async (req, res) => {
     try {
         const { artisanId } = req.params;
-        const artisan = await Artisan.findById(artisanId);
+        console.log('artisanId', artisanId);
+        if (!mongoose.Types.ObjectId.isValid(artisanId)) {
+            return res.status(400).json({ error: 'Invalid ID' });
+        }
+        const artisan = await Artisan.findOne({ _id: artisanId });
+        console.log(artisan);
+        if (!artisan) {
+            return res.status(404).json({ error: 'Artisan not found' });
+        }
         res.status(200).json(artisan);
     } catch (err) {
+        console.log(err);
         res.status(400).json({ error: err.message });
     }
 }

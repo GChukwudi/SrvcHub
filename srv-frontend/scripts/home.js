@@ -15,6 +15,7 @@ async function loadArtisans() {
     artisans.forEach((artisan) => {
       const div = document.createElement("div");
       div.className = "result-item";
+      div.id = artisan.id;
       div.innerHTML = `
                 <img src="${artisan.image}" alt="${artisan.name}">
                 <h2>${artisan.name}</h2>
@@ -24,7 +25,7 @@ async function loadArtisans() {
                 <p>${artisan.bio}</p>
             `;
       div.addEventListener("click", () => {
-        window.location.href = `artisanprofile.html?id=${artisan.id}`;
+        window.location.href = `artisanprofile.html?id=${artisan._id}`;
       });
       resultContainer.appendChild(div);
     });
@@ -61,7 +62,7 @@ searchButton.addEventListener("click", async () => {
                       <p>${artisan.bio}</p>
                   `;
         div.addEventListener("click", () => {
-          window.location.href = `artisanprofile.html?id=${artisan.id}`;
+          window.location.href = `artisanprofile.html?id=${artisan._id}`;
         });
         resultContainer.appendChild(div);
       });

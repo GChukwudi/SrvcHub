@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SrvcHub - Artisan Profile</title>
+    <link rel="stylesheet" href="styles/artisanpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+</head>
+<body>
+    <header>
+        <h1>SrvcHub</h1>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="logout.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <div id="artisanProfile">
+            <div id="profileDetails"></div>
+            <div id="artisanRating" class="stars"></div>
+            <div id="artisanCrafts"><h3>My Portfolio</h3></div>
+            <div id="reviews"></div>
+        </div>
+            <div id="bookingSection">
+                <h3>Booking Details</h3>
+                <div id="calendar"></div>
+                <form id="bookingForm">
+                    <label for="date">Date:</label>
+                    <input type="text" id="date" name="date" readonly>
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                    <input type="submit" value="Book Service">
+                </form>
+            </div>
+    </main>
+    <footer>
+        <h2 class="footer_logo">SrvcHub</h2>
+        <p>&copy; 2024 SrvcHub. All rights reserved.</p>
+        <nav>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#license">License</a>
+        </nav>
+        <div class="social-links">
+            <a href="#">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="scripts/artisanpage.js"></script>
+</body>
+</html>
