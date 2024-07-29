@@ -154,6 +154,24 @@ header nav ul li a {
     background-color: #777;
 }
 
+#results {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#results img {
+    width: 200px;
+    height: 200px;
+    border-radius: 40px;
+    object-fit: cover;
+    margin-top: 5em;
+    margin-bottom: 1px;
+    /* margin-right: 70rem; */
+}
+
 #about {
     background-color: #f5f5f5;
     color: #343148FF;

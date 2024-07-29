@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 div.className = "result-artisan";
                 div.id = artisan.id;
                 div.innerHTML = `
-                    <img src="${artisan.image}" alt="${artisan.name}">
+                    <img src="${artisan.image}" alt="${artisan.name} vo">
                     <h2>${artisan.name}</h2>
                     <p>${artisan.category}</p>
                     <p>${artisan.location}</p>
