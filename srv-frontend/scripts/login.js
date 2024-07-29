@@ -4,7 +4,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    console.log('email:', email, 'password:', password);
 
     try {
         const response = await fetch('https://srvchub-api.onrender.com/auth/signin', {
