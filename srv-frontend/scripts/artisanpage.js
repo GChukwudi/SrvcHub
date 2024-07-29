@@ -4,6 +4,7 @@ const resultContainer = document.getElementById('profileDetails')
 const bookingform = document.getElementById('bookingForm')
 const dateInput = document.getElementById('date')
 const calendarEl = document.getElementById('calendar')
+const resultCraft = document.getElementById('artisanCrafts')
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -33,6 +34,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `;
 
                 resultContainer.append(div);
+            }
+        } catch (error) {
+            console.error('Error fetching artisan profile:', error);
+            alert('Failed to fetch artisan profile');
+        }
+    }
+
+    if (artisanId) {
+        const url = `https://srvchub-api.onrender.com/artisan/${artisanId}`;
+        try {
+            const response = await fetch(url);
+            const artisan = await response.json();
+
+            if (artisan) {
+                resultCraft.innerHTML = "";
+                const div = document.createElement("div");
+                div.className = "result-craft";
+                div.id = artisan.id;
+                
+                artisan.previousWork.forEach(url => {
+                    const img = document.createElement("img");
+                    img.src = url;
+                    div.append(img);
+                });                
+                resultCraft.append(div);
             }
         } catch (error) {
             console.error('Error fetching artisan profile:', error);

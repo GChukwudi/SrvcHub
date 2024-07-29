@@ -51,7 +51,7 @@ main {
     justify-content: center;
     width: 100%;
     padding: 100px;
-    margin-top: -9rem;
+    margin-top: -50rem;
 }
 
 #bookingSection h3 {
@@ -69,18 +69,24 @@ main {
 #profileDetails img {
     width: 250px;
     height: 250px;
-    border-radius: 40%;
+    border-radius: 30%;
     object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-left: 10rem;
 }
 
 #profileDetails h2 {
-    margin: 20px 20px 10px;
+    margin-left: 11rem;
     font-size: 30px;
     font-weight: 400;
 }
 
 #profileDetails p {
-    margin:  1px 20px 10px;
+    margin-left: -1rem;
+    text-align: center;
+    font-size: 15px;
+    line-height: 2;
 }
 
 #artisanCrafts {
@@ -88,30 +94,41 @@ main {
     width: 100%;
 }
 
-#artisanCrafts h3 {
-    margin: 20px 20px 10px;
-    font-size: 30px;
-    font-weight: 400;
+.result-craft {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 5%;
 }
 
-#bookingForm {
-    margin-top: 1em;
+.result-craft img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
 #calendar {
     height: 400px;
     width: 100%;
-    margin-top: 1em;
+    /* margin-top: 10rem; */
     padding: 1em;
     background: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+#calendar:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
 #bookingForm {
     display: none; /* Hidden initially */
-    margin-top: 1em;
+    margin-top: -40rem;
+    width: 200px;
     padding: 1em;
     background: #fff;
     border: 1px solid #ccc;
@@ -136,6 +153,7 @@ main {
 #bookingForm input[type="submit"] {
     padding: 0.5em 1em;
     border: none;
+    text-align: center;
     background: #333;
     color: #fff;
     border-radius: 5px;
