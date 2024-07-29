@@ -14,17 +14,6 @@ exports.getAllArtisans = async (req, res) => {
     }
 }
 
-exports.getArtisanByCategory = async (req, res) => {
-    try {
-        const { category } = req.query;
-        console.log('category', category);
-        const artisans = await Artisan.find({ category: new RegExp(category, 'i') });
-        // const artisans = await Artisan.find({ location: new RegExp(location, 'i') });
-        res.status(200).json(artisans);
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
-}
 
 exports.getArtisanById = async (req, res) => {
     try {
@@ -64,11 +53,29 @@ exports.deleteArtisan = async (req, res) => {
     }
 }
 
-exports.searchArtisanByLocation = async (req, res) => {
+// exports.searchArtisanByLocation = async (req, res) => {
+//     try {
+//         const { location } = req.query;
+//         const artisans = await Artisan.find({ location: new RegExp(location, 'i') });
+//         // const artisans = await Artisan.find({ location });
+//         res.status(200).json(artisans);
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// }
+
+exports.getArtisans = async (req, res) => {
     try {
-        const { location } = req.query;
-        const artisans = await Artisan.find({ location: new RegExp(location, 'i') });
-        // const artisans = await Artisan.find({ location });
+        const { category, location } = req.query;
+        console.log(category, location);
+        let query = {};
+        if (category) {
+            query.category = new RegExp(category, 'i');
+        }
+        if (location) {
+            query.location = new RegExp(location, 'i');
+        }
+        const artisans = await Artisan.find(query);
         res.status(200).json(artisans);
     } catch (err) {
         res.status(400).json({ error: err.message });
