@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // const userId = localStorage.getItem('userId');
     
     if (artisanId) {
-        const url = `http://localhost:8000/artisan/${artisanId}`;
+        const url = `https://srvchub-api.onrender.com/artisan/${artisanId}`;
         try {
             const response = await fetch(url);
             const artisan = await response.json();
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
         console.log(booking);
         try {
-            const url = `http://localhost:8000/booking/create`;
+            const url = `https://srvchub-api.onrender.com/booking/create`;
             const token = localStorage.getItem('token');
             console.log('token:', token);
             const response = await fetch(url, {

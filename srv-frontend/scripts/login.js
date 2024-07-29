@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     console.log('email:', email, 'password:', password);
 
     try {
-        const response = await fetch('http://localhost:8000/auth/signin', {
+        const response = await fetch('https://srvchub-api.onrender.com/auth/signin', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -21,15 +21,15 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             localStorage.setItem('token', result.token);
             window.location.href = 'home.html';
         } else {
-            // if (result.message === 'User not found') {
-            //     alert('User not found');
-            // } else if (result.message === 'Invalid password') {
-            //     alert('Invalid password');
-            // } else {
-            //     alert('An error occurred. Please try again later');
-            // }
+            if (result.message === 'User not found') {
+                alert('User not found');
+            } else if (result.message === 'Invalid password') {
+                alert('Invalid password');
+            } else {
+                alert('An error occurred');
+            }
 
-            alert(response.message)
+            console.error('Error logging in:', result.message);
         }
     }catch (error) {
         console.error('Error logging in:', error);

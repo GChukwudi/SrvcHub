@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
 
     const url =
-      (`http://localhost:8000/auth/profile`);
+      (`https://srvchub-api.onrender.com/auth/profile`);
 
     try {
       const response = await fetch(url, {
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const response = await fetch(`http://localhost:8000/auth/editprofile`, {
+      const response = await fetch(`https://srvchub-api.onrender.com/auth/editprofile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const getBookings = async () => {
     const token = localStorage.getItem("token");
 
-    const url = `http://localhost:8000/booking/mybooking`;
+    const url = `https://srvchub-api.onrender.com/booking/mybooking`;
 
     try {
         const response = await fetch(url, {

@@ -21,7 +21,7 @@ document.getElementById('verificationForm').addEventListener('submit', async (e)
     // xhr.send(new URLSearchParams(formData));
     // console.log('verificationCode:', verificationCode);
     try {
-        const response = await fetch('http://localhost:8000/auth/verify', {
+        const response = await fetch(`https://srvchub-api.onrender.com/auth/verify`, {
             method: 'POST',
             credentials: 'include',
             headers: {

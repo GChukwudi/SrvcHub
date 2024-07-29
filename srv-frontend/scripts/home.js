@@ -6,7 +6,7 @@ const mapElement = document.getElementById("map");
 let artisans;
 
 async function loadArtisans() {
-  const response = await fetch("http://localhost:8000/artisan/all");
+  const response = await fetch("https://srvchub-api.onrender.com/artisan/all");
   artisans = await response.json();
 
   if (artisans) {
@@ -36,7 +36,7 @@ loadArtisans();
 
 searchButton.addEventListener("click", async () => {
   const query = searchInput.value;
-  const url = `http://localhost:8000/artisan/search?location=${query}`;
+  const url = `https://srvchub-api.onrender.com/artisan/search?location=${query}`;
 
   console.log("url", url);
   try {
