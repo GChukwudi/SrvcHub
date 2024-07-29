@@ -39,12 +39,16 @@ nav a {
     background-color: rgba(216, 191, 153, 5);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px (0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px;
-    height: 400px;
+    max-width: 90%;
+    height: auto;
+    min-height: 300px; /* Ensure a minimum height */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Frosted glass effect */
-    text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
 }
 
 .signup-card h2 {
@@ -54,7 +58,7 @@ nav a {
     font-weight: bold;
 }
 .signup-card input {
-    width: 300px;
+    width: calc(100% - 40px);
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -71,7 +75,7 @@ nav a {
 }
 
 .signup-card button {
-    width: 300px;
+    width: calc(100% - 40px);
     padding: 10px;
     border: none;
     background-color: #FFA500; /* Orange color */
@@ -102,4 +106,29 @@ p {
 p a {
     color: #FFA500; /* Orange color */
     text-decoration: none;
+}
+
+/* respomsiveness */
+@media (max-width: 768px) {
+    .signup-card {
+        width: 70%;
+        padding: 15px;
+        min-height: 250px; /* Ensure a minimum height */
+        margin: 0 20px -40px;
+    }
+
+    .signup-card input, .signup-card button {
+        width: calc(100% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-card h2 {
+        font-size: 20px;
+    }
+
+    .signup-card input, .signup-card button {
+        width: calc(100% - 20px);
+        padding: 8px;
+    }
 }

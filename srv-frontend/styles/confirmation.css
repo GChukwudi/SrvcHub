@@ -92,3 +92,41 @@ nav a {
     background: #FFA500;
     transition: 0.5s;
 }
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        padding: 10px 15px;
+
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .verification-box {
+        width: 60%;
+        padding: 15px;
+    }
+
+    .verification-box input, .verification-box button {
+        width: calc(100% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .verification-box h2 {
+        font-size: 20px;
+    }
+
+    .verification-box input, .verification-box button {
+        width: calc(100% - 20px);
+        padding: 8px;
+    }
+}
