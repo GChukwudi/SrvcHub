@@ -39,7 +39,7 @@ const artisanSchema = new mongoose.Schema({
         enum: ['Active', 'Inactive'],
         default: 'Active'
     },
-    previousWorkUrls: {
+    previousWork: {
         type: [String],
         required: false
     }
