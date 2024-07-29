@@ -5,6 +5,7 @@ const bookingform = document.getElementById('bookingForm')
 const dateInput = document.getElementById('date')
 const calendarEl = document.getElementById('calendar')
 const resultCraft = document.getElementById('artisanCrafts')
+const overlay = document.getElementById('overlay')
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -71,10 +72,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         dateClick: function(info) {
             dateInput.value = info.dateStr;
             bookingform.style.display = 'block';
+            overlay.style.display = 'block';
         }
     });
 
     calendar.render();
+
+    overlay.addEventListener('click', () => {
+        bookingform.style.display = 'none';
+        overlay.style.display = 'none';
+    });
 
     bookingform.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -85,7 +92,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             time: formData.get('time'),
             location: formData.get('location')
         };
-        console.log(booking);
         try {
             const url = `https://srvchub-api.onrender.com/booking/create`;
             const token = localStorage.getItem('token');
@@ -108,6 +114,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error('Error creating booking:', error);
             alert('Failed to create booking');
+        } finally {
+            bookingform.style.display = 'none';
+            overlay.style.display = 'none';
         }
     });
 

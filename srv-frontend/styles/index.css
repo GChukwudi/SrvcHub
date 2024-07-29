@@ -125,12 +125,18 @@ header nav ul li a {
     border-radius: 20px;
     width: 300px;
     height: 40px;
+    font-size: 14px;
     box-sizing: border-box;
 }
 .explore input::placeholder {
     color: #999;
     font-size: 14px;
 }
+
+.explore input::after {
+    background-color: #777;
+}
+
 .explore button {
     padding: 12px 40px;
     border: none;
