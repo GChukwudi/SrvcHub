@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p>${artisan.bio}</p>
                     `;
                     div.addEventListener('click', () => {
-                        window.location.href = `artisanprofile.html?id=${artisan._id}`;
+                        window.location.href = `login.html`;
                     });
                     resultContainer.appendChild(div);
                 });
