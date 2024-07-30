@@ -30,6 +30,7 @@ async function loadArtisans() {
       resultContainer.appendChild(div);
     });
   }
+  initMap(artisans);
 }
 
 loadArtisans();
