@@ -43,7 +43,7 @@ searchButton.addEventListener("click", async () => {
     const response = await fetch(url);
     artisans = await response.json();
 
-    console.log("Artisans:", artisans);
+    // console.log("Artisans:", artisans);
 
     resultContainer.innerHTML = "";
     if (!artisans) {
